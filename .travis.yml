@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - 10.14.1
+branches:
+  only:
+    - dev
+before_install:
+  - npm install -g npm
+install:
+  - npm install
+script:
+  - echo "skipping tests"
+deploy:
+  provider: heroku
+  app: lambda-receipt-tracker
+  api_key:
+    secure:
