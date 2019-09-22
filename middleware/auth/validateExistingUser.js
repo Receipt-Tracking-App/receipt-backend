@@ -6,14 +6,16 @@ const validateExistingUser = async (req, res, next) => {
   try {
     const user = await User.query()
       .where("username", username)
-      .orWhere("email", email);
+      .orWhere("email", email)
+      .first();
 
     if (!user) {
       next();
     } else {
       res.status(400).json({
         error: true,
-        message: "The username or email is already taken."
+        message:
+          "The username is already taken or the email is already registered."
       });
     }
   } catch (e) {

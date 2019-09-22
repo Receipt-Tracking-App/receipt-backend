@@ -45,12 +45,12 @@ const controller = {
 
   // identification : username OR email;
   loginUser: async (req, res) => {
-    const { username, password } = req.body;
+    const { userId, password } = req.body;
 
     try {
       const user = await User.query()
-        .where("username", username)
-        .orWhere("email", username)
+        .where("username", userId)
+        .orWhere("email", userId)
         .first();
 
       if (user && bcrypt.compareSync(password, user.password)) {
