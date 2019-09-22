@@ -1,15 +1,15 @@
 language: node_js
 node_js:
-- 10.14.1
+  - 10.14.1
 branches:
   only:
-  - dev
+    - dev
 before_install:
-- npm install -g npm
+  - npm install -g npm
 install:
-- npm install
+  - npm install
 script:
-- echo "skipping tests"
+  - echo "skipping tests"
 deploy:
   provider: heroku
   app: lambda-receipt-tracker
@@ -18,4 +18,4 @@ deploy:
   on:
     branch: dev
   run:
-  - knex migate:latest
+    - "knex migate:latest"
