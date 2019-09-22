@@ -16,8 +16,7 @@ deploy:
   api_key:
     secure: $HEROKU_API_KEY
   on:
-    branches:
-      only:
-        - dev
+    branch: dev
+
   run:
     - "knex migate:latest"
