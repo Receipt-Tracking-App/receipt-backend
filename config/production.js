@@ -7,4 +7,6 @@ const config = {
   db: knex(knexConfig.production)
 };
 
-module.exports = config;
+module.exports = {
+  config
+};
