@@ -14,4 +14,6 @@ deploy:
   provider: heroku
   app: lambda-receipt-tracker
   api_key:
-    secure:
+    secure: $HEROKU_API_KEY
+  run:
+    - "knex migate:latest"
