@@ -45,7 +45,7 @@ const controller = {
         group_id: groupId
       });
 
-      const token = createToken({ username: user.last_name });
+      const token = createToken({ userId: user.id, username: user.last_name });
 
       res
         .status(201)
@@ -69,7 +69,8 @@ const controller = {
 
       if (user && bcrypt.compareSync(password, user.password)) {
         const token = createToken({
-          lastName: user.last_name
+          lastName: user.last_name,
+          userId: user.id
         });
 
         res.json({ error: false, message: "User authenticated.", token });

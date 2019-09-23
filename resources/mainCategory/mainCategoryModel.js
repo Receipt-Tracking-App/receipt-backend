@@ -1,12 +1,11 @@
 const { Model } = require("objection");
-
 const config = require("../../config");
 
 Model.knex(config.db);
 
-class User extends Model {
+class MainCategory extends Model {
   static get tableName() {
-    return "users";
+    return "receipt_main_categories";
   }
 
   static get idColumn() {
@@ -14,19 +13,19 @@ class User extends Model {
   }
 
   static get relationMappings() {
-    const Receipt = require("../receipt/receiptModel");
+    const Category = require("../category/categoryModel");
 
     return {
-      receipts: {
+      categories: {
         relation: Model.HasManyRelation,
-        modelClass: Receipt,
+        modelClass: Category,
         join: {
-          from: "users.id",
-          to: "receipts.user_id"
+          from: "receipt_main_categories.id",
+          to: "receipt_categories.receipt_main_category_id"
         }
       }
     };
   }
 }
 
-module.exports = User;
+module.exports = MainCategory;

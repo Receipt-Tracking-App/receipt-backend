@@ -7,7 +7,8 @@ const options = {
     info: {
       title: "Receipt Tracker API",
       version: "1.0.0",
-      description: "Description of resquests and responses API endpoints"
+      description:
+        "Description of resquests and responses API endpoints. Token expiration is set to 6 hours"
     },
     basePath: "https://lambda-receipt-tracker.herokuapp.com/api",
     tags: {
@@ -15,7 +16,7 @@ const options = {
     }
   },
   // List of files to be processes. You can also set globs './routes/*.js'
-  apis: ["./routes/auth.js"]
+  apis: ["./routes/auth.js", "./routes/mainCategory.js", "./routes/receipt.js"]
 };
 
 const specs = swaggerJsdoc(options);

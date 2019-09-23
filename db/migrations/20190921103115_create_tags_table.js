@@ -10,7 +10,8 @@ exports.up = function(knex) {
     table
       .foreign("receipt_id")
       .references("id")
-      .inTable("receipts");
+      .inTable("receipts")
+      .onDelete("CASCADE");
     table
       .integer("receipt_category_id")
       .unsigned()
