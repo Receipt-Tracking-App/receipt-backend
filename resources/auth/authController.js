@@ -1,4 +1,5 @@
 const User = require("../user/userModel");
+const Group = require("../group/groupModel");
 const bcrypt = require("bcryptjs");
 const config = require("../../config");
 const jwt = require("jsonwebtoken");
@@ -21,6 +22,18 @@ const createToken = data => {
 const controller = {
   registerUser: async (req, res) => {
     const { firstName, lastName, username, email, password } = req.body;
+    let groupId = null;
+    try {
+      const group = await Group.query().insert({
+        name: "individual"
+      });
+
+      groupId = group.id;
+    } catch (e) {
+      res
+        .status(500)
+        .json({ error: true, message: "Unable to create a group." });
+    }
 
     try {
       const user = await User.query().insert({
@@ -28,7 +41,8 @@ const controller = {
         last_name: lastName,
         username,
         email,
-        password: bcrypt.hashSync(password, 14)
+        password: bcrypt.hashSync(password, 14),
+        group_id: groupId
       });
 
       const token = createToken({ username: user.last_name });
