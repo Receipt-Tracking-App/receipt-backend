@@ -90,11 +90,13 @@ const controller = {
     }
   },
   deleteReceipt: async (req, res) => {
+    console.log(req.params);
     const { id } = req.params;
     try {
       await Receipt.query().deleteById(id);
       res.json({ error: false, message: "Receipt deleted successfully." });
     } catch (e) {
+      console.log(e);
       res
         .status(500)
         .json({ error: true, message: "Unable to delete the receipt" });
