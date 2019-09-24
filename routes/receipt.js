@@ -3,6 +3,7 @@ const receiptController = require("../resources/receipt/receiptController");
 const checkToken = require("../middleware/auth/checkToken");
 const requiresLogin = require("../middleware/auth/requiresLogin");
 const checkReceiptId = require("../middleware/receipt/checkReceiptId");
+const upload = require("../middleware/receipt/uploadImage");
 
 router.use(checkToken);
 router.use(requiresLogin);
@@ -39,7 +40,7 @@ router.use(requiresLogin);
  *          categoryId:
  *              type: string
  *              example: 8
- * 
+ *
  *  Receipt:
  *      type: object
  *      required:
@@ -69,7 +70,20 @@ router.use(requiresLogin);
  *          categoryId:
  *              type: string
  *              example: 8
- 
+ *
+ *  UploadResponse:
+ *    type: object
+ *    properties:
+ *      error:
+ *        type: boolean
+ *        example: false
+ *      message:
+ *        type: string
+ *        example: The receipt image recorded successfully.
+ *      url:
+ *        type: string
+ *        example: http://res.cloudinary.com/df4klfgo3l/image/upload/v1569334612/receipts/y8lwcnlq9abcbontyi0z.jpg
+ *
  */
 
 /**
@@ -165,4 +179,36 @@ router.delete("/:id", checkReceiptId, receiptController.deleteReceipt);
  *
  */
 router.get("/users/:id", receiptController.getAllReceipts);
+/**
+ * @swagger
+ * /receipts/{id}/upload:
+ *    post:
+ *      tags:
+ *      - receipt
+ *      summary: Upload a receive image
+ *      description: the file upload form must be in "multipart/form-data" and the name of the image input must be "receipt"
+ *      consumes:
+ *      - application/json
+ *      produces:
+ *      - application/json
+ *      parameters:
+ *      - name: id
+ *        in: path
+ *        required: true
+ *        description: receipt id
+ *      responses:
+ *        200:
+ *          description: Ok
+ *          schema:
+ *            $ref: "#/definitions/UploadResponse"
+ *
+ *
+ *
+ */
+router.post(
+  "/:id/upload",
+  checkReceiptId,
+  upload.single("receipt"),
+  receiptController.processReceiptImage
+);
 module.exports = router;

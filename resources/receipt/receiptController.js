@@ -50,10 +50,11 @@ const controller = {
     try {
       const receipts = await User.query()
         .findById(id)
-        .eager("receipts")
+        .eager("[receipts, receipts.[media]]")
         .select("users.id");
       res.json({ error: false, receipts });
     } catch (e) {
+      console.log(e);
       res
         .status(500)
         .json({ error: true, message: "Unable to retrieve the user receipt." });
@@ -91,6 +92,7 @@ const controller = {
   },
   deleteReceipt: async (req, res) => {
     const { id } = req.params;
+
     try {
       await Receipt.query().deleteById(id);
       res.json({ error: false, message: "Receipt deleted successfully." });
@@ -98,6 +100,29 @@ const controller = {
       res
         .status(500)
         .json({ error: true, message: "Unable to delete the receipt" });
+    }
+  },
+  processReceiptImage: async (req, res) => {
+    try {
+      const image = {};
+      image.url = req.file.url;
+      image.id = req.file.public_id;
+
+      const receipt = await Receipt.query().findById(req.params.id);
+
+      const media = await receipt
+        .$relatedQuery("media")
+        .insert({ url: image.url, description: image.id });
+
+      res.json({
+        error: false,
+        message: "The receipt image recorded successfully.",
+        url: media.url
+      });
+    } catch (e) {
+      res
+        .status(500)
+        .json({ error: true, message: "Unable to record receipt image." });
     }
   }
 };

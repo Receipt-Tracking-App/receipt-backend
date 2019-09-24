@@ -15,6 +15,7 @@ class Receipt extends Model {
   static get relationMappings() {
     const User = require("../user/userModel");
     const Category = require("../category/categoryModel");
+    const ReceiptMedia = require("../receiptMedia/receipMediaModel");
 
     return {
       user: {
@@ -36,6 +37,14 @@ class Receipt extends Model {
             to: "tags.receipt_category_id"
           },
           to: "receipt_categories.id"
+        }
+      },
+      media: {
+        relation: Model.HasManyRelation,
+        modelClass: ReceiptMedia,
+        join: {
+          from: "receipts.id",
+          to: "receipt_media.receipt_id"
         }
       }
     };
