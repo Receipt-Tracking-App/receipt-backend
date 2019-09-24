@@ -17,6 +17,3 @@ deploy:
     secure: 2e5vHmVDwGdX2GXWInsPg1Y8Sqj6jbR6k7/qsIIWKDBH5WtH/jgcdqOYCyGAxx1foQw5blj3aSZaKSmcBNBCsYlUBahPvuvcSnspowz/OuizT10o5IET1WhUI7DKLSinIsPVFUP8uP46fnn5PEM5z3j/Y8ONyj124+Qmousf6kJKkbEnUOkdzJZ37MKNL4WDJYFuSJ19ueWhuEbDt+j3cNXJmMiz6Fl97BqG+iD5svuSg1SDBHDl/XA3zW1mvI3Gon904RAODvBaUcP6eRR9Jfk79XyAUjvy+NnBXyb5YuUZR1Q/8ABSQQQxOHKFPRpKPxsDIFgiUrTJx3kZq4XtQ6JLPnnEEvIE3ohROlfhgDec3t4DWqXHJQxOm+VDOc8tuFQuW19akMLGJJK7Ndas22029BJupMfZP3Zq3BwPkbNiYf/LNioIqouzu+Pg6v50vWpu5lMZT2PWoyxwmrJ1AK6ayBZBpEaQarbGy2j7jBw4cZz6QfktmADo6sb50EcSqvISRoqVPy9jDYxgvKuD71BMP5KV7hnRM7K/Mhhv/u9xNpg+NfpafeGeB2p7ubJHqQjuZ8DU5YxjXGDHPAhlMM+JFRRKIEcvNNOinPdFFjayzCur4DfOhbEfztpRq/hwUu0315vR+h5dSjnvQYpjqwHCeiI1kbkw87TPEjVtKdo=
   on:
     branch: dev
-  run:
-    - "knex migate:latest"
-    - "knex seed:run"
