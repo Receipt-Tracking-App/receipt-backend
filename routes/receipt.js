@@ -91,7 +91,7 @@ router.use(requiresLogin);
  * /receipts:
  *    post:
  *      tags:
- *      - receipt
+ *      - Receipt Handling
  *      summary: Record a new receipt
  *      description: notes, tagName, tagDescription are optional
  *      consumes:
@@ -115,7 +115,7 @@ router.post("/", receiptController.createReceipt);
  * /receipts/{id}:
  *    put:
  *      tags:
- *      - receipt
+ *      - Receipt Handling
  *      summary: Update a receipt
  *      description: notes, tagName, tagDescription are optional
  *      consumes:
@@ -142,7 +142,7 @@ router.put("/:id", checkReceiptId, receiptController.updateReceipt);
  * /receipts/{id}:
  *    delete:
  *      tags:
- *      - receipt
+ *      - Receipt Handling
  *      summary: Delete a receipt
  *
  *      consumes:
@@ -163,7 +163,7 @@ router.delete("/:id", checkReceiptId, receiptController.deleteReceipt);
  * /receipts/users/{id}:
  *    get:
  *      tags:
- *      - receipt
+ *      - Receipt Handling
  *      summary: Get all receipts via a user's id
  *      consumes:
  *      - application/json
@@ -184,8 +184,8 @@ router.get("/users/:id", receiptController.getAllReceipts);
  * /receipts/{id}/upload:
  *    post:
  *      tags:
- *      - receipt
- *      summary: Upload a receive image
+ *      - Receipt Handling
+ *      summary: Upload a receipt image
  *      description: the file upload form must be in "multipart/form-data" and the name of the image input must be "receipt"
  *      consumes:
  *      - application/json

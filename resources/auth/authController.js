@@ -49,7 +49,12 @@ const controller = {
 
       res
         .status(201)
-        .json({ error: false, message: "User registered.", token });
+        .json({
+          error: false,
+          message: "User registered.",
+          token,
+          userId: user.id
+        });
     } catch (e) {
       res
         .status(500)
@@ -73,7 +78,12 @@ const controller = {
           userId: user.id
         });
 
-        res.json({ error: false, message: "User authenticated.", token });
+        res.json({
+          error: false,
+          message: "User authenticated.",
+          userId: user.id,
+          token
+        });
       } else {
         res
           .status(401)

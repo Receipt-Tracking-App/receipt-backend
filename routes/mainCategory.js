@@ -12,7 +12,7 @@ router.use(requiresLogin);
  * /main-categories:
  *    get:
  *      tags:
- *      - main-categories
+ *      - Receipt Categories
  *      summary: Retrieve all main receipt categories and their  sub-categories
  *      consumes:
  *      - application/json

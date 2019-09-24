@@ -38,7 +38,6 @@ const controller = {
         receiptId: receipt.id
       });
     } catch (e) {
-      console.log(e);
       res
         .status(500)
         .json({ error: true, message: "Unable to record the receipt." });
@@ -50,11 +49,10 @@ const controller = {
     try {
       const receipts = await User.query()
         .findById(id)
-        .eager("[receipts, receipts.[media]]")
+        .eager("[receipts, receipts.[media, categories]]")
         .select("users.id");
       res.json({ error: false, receipts });
     } catch (e) {
-      console.log(e);
       res
         .status(500)
         .json({ error: true, message: "Unable to retrieve the user receipt." });

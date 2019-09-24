@@ -7,10 +7,13 @@ const options = {
     info: {
       title: "Receipt Tracker API",
       version: "1.0.0",
-      description:
-        "Description of resquests and responses API endpoints. Token expiration is set to 6 hours"
+      description: `### Description of resquests and responses API endpoints. 
+      Token expiration is currenly set to 6 hours. 
+      The base url is https://lambda-receipt-tracker.herokuapp.com/api
+      The Try It Out API Testing is not configured and therefore it is not working.`
     },
-    basePath: "https://lambda-receipt-tracker.herokuapp.com/api",
+
+    basePath: "/",
     tags: {
       name: "authentication"
     }

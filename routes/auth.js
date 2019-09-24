@@ -58,7 +58,7 @@ const validateExixtingUser = require("../middleware/auth/validateExistingUser");
  * /auth/register:
  *    post:
  *      tags:
- *      - authentication
+ *      - Authentication
  *      summary: Register a new user
  *      consumes:
  *      - application/json
@@ -101,7 +101,7 @@ router.post(
  * /auth/login:
  *    post:
  *      tags:
- *      - authentication
+ *      - Authentication
  *      summary: Login a user
  *      description: userId must be the user's username or the user's email
  *      consumes:
