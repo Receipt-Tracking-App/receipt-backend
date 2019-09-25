@@ -21,13 +21,11 @@ const options = {
     tags: {
       name: "authentication"
     },
-    components: {
-      securitySchemes: {
-        bearer: {
-          type: "http",
-          scheme: "bearer",
-          bearerFormat: "jwt"
-        }
+    securityDefinitions: {
+      BearerAuth: {
+        type: "apiKey",
+        name: "Authorization",
+        in: "header"
       }
     }
   },

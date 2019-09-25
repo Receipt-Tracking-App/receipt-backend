@@ -12,7 +12,7 @@ router.use(requiresLogin);
  * /main-categories:
  *    get:
  *      security:
- *      - bearerAuth: []
+ *      - BearerAuth: []
  *      tags:
  *      - Receipt Categories
  *      summary: Retrieve all main receipt categories and their  sub-categories
@@ -20,6 +20,9 @@ router.use(requiresLogin);
  *      - application/json
  *      produces:
  *      - application/json
+ *      responses:
+ *          200:
+ *              description: Ok
  *
  *
  */

@@ -90,6 +90,8 @@ router.use(requiresLogin);
  * @swagger
  * /receipts:
  *    post:
+ *      security:
+ *        BearerAuth: []
  *      tags:
  *      - Receipt Handling
  *      summary: Record a new receipt
@@ -114,6 +116,8 @@ router.post("/", receiptController.createReceipt);
  * @swagger
  * /receipts/{id}:
  *    put:
+ *      security:
+ *        BearerAuth: []
  *      tags:
  *      - Receipt Handling
  *      summary: Update a receipt
@@ -141,6 +145,8 @@ router.put("/:id", checkReceiptId, receiptController.updateReceipt);
  * @swagger
  * /receipts/{id}:
  *    delete:
+ *      security:
+ *        BearerAuth: []
  *      tags:
  *      - Receipt Handling
  *      summary: Delete a receipt
@@ -162,6 +168,8 @@ router.delete("/:id", checkReceiptId, receiptController.deleteReceipt);
  * @swagger
  * /receipts/users/{id}:
  *    get:
+ *      security:
+ *        BearerAuth: []
  *      tags:
  *      - Receipt Handling
  *      summary: Get all receipts via a user's id
@@ -183,6 +191,8 @@ router.get("/users/:id", receiptController.getAllReceipts);
  * @swagger
  * /receipts/{id}/upload:
  *    post:
+ *      security:
+ *        BearerAuth: []
  *      tags:
  *      - Receipt Handling
  *      summary: Upload a receipt image
