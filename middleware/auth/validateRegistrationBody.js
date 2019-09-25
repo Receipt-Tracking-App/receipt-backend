@@ -12,7 +12,7 @@ const validateRegistrationBody = (req, res, next) => {
       errors.push("First name is required.");
     }
 
-    if (!validator.isLength(firstName, { min: 2, max: 12 })) {
+    if (!validator.isLength(firstName, { min: 2, max: 20 })) {
       errors.push("First name must be between 2 and 12 characters");
     }
 
@@ -20,7 +20,7 @@ const validateRegistrationBody = (req, res, next) => {
       errors.push("Last name is required.");
     }
 
-    if (!validator.isLength(lastName, { min: 2, max: 12 })) {
+    if (!validator.isLength(lastName, { min: 2, max: 20 })) {
       errors.push("Last name must be between 2 and 12 characters");
     }
 
@@ -29,7 +29,7 @@ const validateRegistrationBody = (req, res, next) => {
     }
 
     if (!validator.isLength(username, { min: 4, max: 12 })) {
-      errors.push("Username must be between 2 and 12 characters");
+      errors.push("Username must be between 4 and 12 characters");
     }
 
     if (!validator.isEmail(email)) {
@@ -40,8 +40,8 @@ const validateRegistrationBody = (req, res, next) => {
       errors.push("Password is required.");
     }
 
-    if (!validator.isLength(password, { min: 4, max: 12 })) {
-      errors.push("First name must be between 2 and 12 characters");
+    if (!validator.isLength(password, { min: 4, max: 32 })) {
+      errors.push("Password must be between 4 and 12 characters");
     }
   }
 

@@ -11,6 +11,8 @@ router.use(requiresLogin);
  *
  * /main-categories:
  *    get:
+ *      security:
+ *      - bearerAuth: []
  *      tags:
  *      - Receipt Categories
  *      summary: Retrieve all main receipt categories and their  sub-categories

@@ -19,10 +19,12 @@ const validateExixtingUser = require("../middleware/auth/validateExistingUser");
  *      firstName:
  *        type: string
  *        minLength: 2
+ *        maxLength: 20
  *        example: Annie
  *      lastName:
  *        type: string
  *        minLength: 2
+ *        maxLength: 20
  *        example: Le
  *      email:
  *        type: string
@@ -30,12 +32,12 @@ const validateExixtingUser = require("../middleware/auth/validateExistingUser");
  *      username:
  *        type: string
  *        minLength: 4
- *        maxLength: 6
+ *        maxLength: 12
  *        example: ale01
  *      password:
  *        type: string
  *        minLength: 4
- *        maxLength: 12
+ *        maxLength: 32
  *        example: powerbudgetting
  *  User:
  *    type: object

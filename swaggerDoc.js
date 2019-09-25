@@ -13,9 +13,22 @@ const options = {
       The Try It Out API Testing is not configured and therefore it is not working.`
     },
 
-    basePath: "/",
+    basePath: "/api",
+    server: {
+      url: "https://lambda-receipt-tracker.herokuapp.com",
+      description: "Sandbox server"
+    },
     tags: {
       name: "authentication"
+    },
+    components: {
+      securitySchemes: {
+        bearer: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "jwt"
+        }
+      }
     }
   },
   // List of files to be processes. You can also set globs './routes/*.js'
