@@ -1,5 +1,5 @@
-## Receipt Tracker Backend
+# Receipt Tracker API
 
-### Documentations
+## Documentations
 
-[documentation](https://lambda-receipt-tracker.herokuapp.com/api-docs/)
+[documentation](https://lambda-receipt-tracker.herokuapp.com/api-docs)
